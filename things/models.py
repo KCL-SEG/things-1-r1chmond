@@ -1,7 +1,8 @@
 
 from django.db import models
 from enum import unique
-from things.views import validate_integer
+from django.core.validators import MaxValueValidator, MinValueValidator
+
 
 class Thing(models.Model):
     name = models.CharField(
@@ -16,6 +17,9 @@ class Thing(models.Model):
     )
     quantity = models.IntegerField(
         unique = False,
-        validators = [validate_integer]
+        validators = [
+             MinValueValidator(0),
+             MaxValueValidator(100)                   
+                                ]
     )
 
