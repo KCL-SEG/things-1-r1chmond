@@ -10,13 +10,11 @@ class Thing(models.Model):
         blank = False,
         unique = True,
         )
-    description = models.TextField(
+    description = models.CharField(
         max_length = 120, 
         blank = True, 
-        unique = False,
     )
     quantity = models.IntegerField(
-        unique = False,
         validators = [
              MinValueValidator(0),
              MaxValueValidator(100)                   
